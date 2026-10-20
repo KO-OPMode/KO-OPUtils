@@ -349,5 +349,21 @@ namespace KOOP.Extensions
         {
             return source.Contains(toCheck, StringComparison.OrdinalIgnoreCase);
         }
+
+        /// <summary>
+		/// Trims the end of a path, keeping only the text after the final slash
+		/// </summary>
+		public static string EndOfPath(this string path)
+		{
+			if (path == null)
+				return "";
+
+			int pos = path.LastIndexOf("/") + 1;
+
+			if (pos > -1)
+				return path.Substring(pos, path.Length - pos);
+			else
+				return path;
+		}
     }
 }
