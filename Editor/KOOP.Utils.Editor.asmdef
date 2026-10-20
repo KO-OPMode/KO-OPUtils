@@ -1,0 +1,27 @@
+{
+    "name": "KOOP.Utils.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7c0eaf5809bbeb245a065a7c2f5411c9",
+        "GUID:102bc6560c5f6b54fb797d7d14a2a5b0",
+        "GUID:227d8e8780c7e34478e470f76a255581",
+        "GUID:8c23b099fd7fc4a22b53f3e1e388612a",
+        "GUID:43d14f4b85efe7f459e365594eddc6f9",
+        "GUID:49818357e697641afb75d2f8acaf1861",
+        "GUID:0c752da273b17c547ae705acf0f2adf2",
+        "GUID:5633b07c916016a47a01b67b1803426d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "System.Text.Json.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
