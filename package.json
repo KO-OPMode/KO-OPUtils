@@ -6,5 +6,12 @@
   "unity": "6000.3",
   "author": {
     "name": "KO_OP"
+  },
+  "dependencies": {
+    "com.jonagill.unitycollections": "1.0.7",
+    "com.jonagill.bulkeditor": "1.0.7",
+    "com.jonagill.unityinternalaccess": "1.0.6",
+    "com.cysharp.unitask": "2.5.10",
+    "com.unity.addressables": "2.9.1"
   }
 }
