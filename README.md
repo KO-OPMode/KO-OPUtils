@@ -2,7 +2,9 @@
 
 Shared utility and helper functionalty for KO_OP Unity projects.
 
-To install, install the following dependency packages first via Unity's Package Manager.
+To install, first install Unity's Localization package via the Package Manager.
+
+Then use the Package Manager to add the following packages via git URL:
 
 ```
 https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask
