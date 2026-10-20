@@ -411,7 +411,11 @@ namespace KOOPEditor
                 tooltip = tooltip ?? string.Empty
             };
 
+#if UNITY_6000_4_OR_NEWER
+            var prefKey = $"{serializedObject.targetObject.GetEntityId()}_{label}";
+#else
             var prefKey = $"{serializedObject.targetObject.GetInstanceID()}_{label}";
+#endif
 
             // Objects are more transient than global prefs -- save object-specific data
             // in SessionState rather than cluttering up EditorPrefs

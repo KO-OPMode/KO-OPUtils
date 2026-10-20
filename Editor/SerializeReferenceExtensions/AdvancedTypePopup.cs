@@ -129,7 +129,11 @@ namespace KOOP.SerializeReferenceExtensions.Editor
 
         private static AdvancedDropdownItem GetItem(AdvancedDropdownItem parent, string name)
         {
+#if UNITY_6000_5_OR_NEWER
+            foreach (var item in parent.childList)
+#else
             foreach (var item in parent.children)
+#endif
             {
                 if (item.name == name)
                 {

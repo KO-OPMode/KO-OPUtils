@@ -808,7 +808,7 @@ namespace KOOPEditor
         {
             //Select any material properties which are marked as "missing"
             var missingMaterialIndexes = m_ExternalObjectsCache.Values.Select((extObj, index) => new { extObj, index })
-                                                               .Where(x => x.extObj.property != null && x.extObj.property.objectReferenceValue == null && x.extObj.property.objectReferenceInstanceIDValue != 0)
+                                                               .Where(x => IsPropertyMissingReference(x.extObj))
                                                                .Select(x => x.index)
                                                                .ToArray();
 
@@ -825,6 +825,27 @@ namespace KOOPEditor
             foreach (var assetImporter in targets)
             {
                 AssetDatabase.ImportAsset(assetImporter.assetPath, ImportAssetOptions.ForceUpdate);
+            }
+
+            bool IsPropertyMissingReference(ExternalObjectCache extObj)
+            {
+                if (extObj.property == null || extObj.property.objectReferenceValue == null)
+                {
+                    return false;
+                }
+                
+#if UNITY_6000_4_OR_NEWER
+                if (extObj.property.objectReferenceEntityIdValue == EntityId.None)
+                {
+                    return false;
+                }      
+#else
+                if (extObj.property.objectReferenceInstanceIDValue == 0)
+                {
+                    return false;
+                }
+#endif
+                return true;
             }
         }
 

@@ -123,7 +123,12 @@ namespace KOOPEditor
         static EditorHighlightUtility()
         {
             EditorApplication.projectWindowItemOnGUI += OnProjectWindowItemGUI;
+            
+#if UNITY_6000_4_OR_NEWER
+            EditorApplication.hierarchyWindowItemByEntityIdOnGUI += OnHierarchyWindowItemGUI;
+#else
             EditorApplication.hierarchyWindowItemOnGUI += OnHierarchyWindowItemGUI;
+#endif
         }
 
         private static void OnProjectWindowItemGUI(string guid, Rect selectionRect)
@@ -136,10 +141,14 @@ namespace KOOPEditor
             selectionRect.xMin = 0;
             mapping.Draw(selectionRect);
         }
-
-        private static void OnHierarchyWindowItemGUI(int instanceID, Rect selectionRect)
+        
+#if UNITY_6000_4_OR_NEWER
+        private static void OnHierarchyWindowItemGUI(EntityId entityId, Rect selectionRect)
+#else
+        private static void OnHierarchyWindowItemGUI(int entityId, Rect selectionRect)
+#endif
         {
-            var sceneObject = EditorUtility.EntityIdToObject(instanceID);
+            var sceneObject = EditorUtility.EntityIdToObject(entityId);
             if (sceneObject == null) return;
             if (sceneObject is not GameObject sceneGameObject) return;
             var mapping = Mappings.FirstOrDefault(m => m.MatchesSceneGameObject(sceneGameObject));
