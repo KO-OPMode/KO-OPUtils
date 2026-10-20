@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
 
-namespace KOOP.Utils
+namespace KOOP
 {
     public static class PlasticUtils
     {

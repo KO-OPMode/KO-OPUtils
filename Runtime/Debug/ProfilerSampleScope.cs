@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Profiling;
 
-namespace KOOP.Utils
+namespace KOOP
 {
     /// <summary>
     /// Scoped class for automatically calling <see cref="Profiler.BeginSample(string)"/>

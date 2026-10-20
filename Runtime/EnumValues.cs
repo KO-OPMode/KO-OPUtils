@@ -11,7 +11,7 @@ namespace KOOP
     {
         private static readonly T[] _values;
 
-        public static IReadOnlyCollection<T> Values => _values;
+        public static IReadOnlyList<T> Values => _values;
         
         static EnumValues()
         {

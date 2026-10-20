@@ -3,7 +3,7 @@ using System;
 using KOOP.Extensions;
 using UnityCollections;
 
-namespace KOOPUtil
+namespace KOOP
 {
     /// <summary>
     /// Helper methods for rendering gizmos in editor

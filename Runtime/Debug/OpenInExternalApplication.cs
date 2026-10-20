@@ -5,7 +5,7 @@ using System.Security.Permissions;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace KOOP.Utils
+namespace KOOP
 {
     /// <summary>
     /// Helper class to open files in either Windows or macOS.

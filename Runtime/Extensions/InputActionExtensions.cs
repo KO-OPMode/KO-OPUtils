@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace KOOPUtil
+namespace KOOP
 {
     public static class InputActionExtensions
     {

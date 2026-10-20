@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KOOP.Utils
+namespace KOOP
 {
     public static class EnumUtils
     {

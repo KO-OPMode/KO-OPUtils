@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace KOOPUtil
+namespace KOOP
 {
     /// <summary>
     /// A class full of handy utility functions for UI.

@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace KOOP.Utils 
+namespace KOOP 
 {    
     /// <summary>
     /// A Reasoner is intended to be used when a single counter is being modified by multiple different sources.

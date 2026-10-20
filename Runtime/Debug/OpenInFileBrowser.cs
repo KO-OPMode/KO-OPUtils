@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Permissions;
 using UnityEngine;
 
-namespace KOOP.Utils
+namespace KOOP
 {
     /// <summary>
     /// Helper class to open files in either Windows or macOS.

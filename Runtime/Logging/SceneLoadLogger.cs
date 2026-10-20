@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 #endif
 
-namespace KOOPUtil
+namespace KOOP
 {
     /// <summary>
     /// Static helper that logs every time we load and unload scenes
