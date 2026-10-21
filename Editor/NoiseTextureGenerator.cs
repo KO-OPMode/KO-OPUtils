@@ -12,7 +12,7 @@ namespace KOOPEditor
     /// Currently, the two functions actually in use (OctaveNoise and SmoothNoise) are reproducing code that was formerly found
     /// inside StarrySky_Jupiter.cginc
     /// </summary>
-    public class NoiseTextureGenerator : MonoBehaviour
+    public static class NoiseTextureGenerator
     {
         
         private static void PseudoShaderMakePng(
@@ -76,7 +76,7 @@ namespace KOOPEditor
             System.IO.File.WriteAllBytes(Application.dataPath+"/_Data/GeneratedTextures/"+filename+".png", bytes);
         }
 
-        [MenuItem("Young Suns/Regenerate Noise Textures")]
+        [MenuItem("Assets/KO_OP/Noise Textures/Regenerate Noise Textures")]
         private static void RegenerateNoiseTextures()
         {
             //these two files only exist to produce an output to be inspected by a human
