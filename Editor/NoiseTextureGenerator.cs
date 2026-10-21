@@ -72,7 +72,7 @@ namespace KOOPEditor
             }
             tex.Apply();
             byte[] bytes = ImageConversion.EncodeToPNG(tex);
-            DestroyImmediate(tex);
+            Object.DestroyImmediate(tex);
             System.IO.File.WriteAllBytes(Application.dataPath+"/_Data/GeneratedTextures/"+filename+".png", bytes);
         }
 
