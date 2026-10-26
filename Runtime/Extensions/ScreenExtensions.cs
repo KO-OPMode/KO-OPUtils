@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 namespace KOOP.Extensions
 {
@@ -28,7 +29,7 @@ namespace KOOP.Extensions
             return false;
         }
 
-        public bool TryGetClosestSupportedResolution(Vector2Int dimensions, out Resolution supportedResolution)
+        public static bool TryGetClosestSupportedResolution(Vector2Int dimensions, out Resolution supportedResolution)
         {
             // Get our current resolutions -- this copies the array from the engine,
             // but we shouldn't call it enough to matter too much
