@@ -17,61 +17,37 @@ namespace KOOP.Extensions
         {
             return new Vector2Int(resolution.width, resolution.height);
         }
-        
-        public static bool TryGetMatchingResolutionIndex(IReadOnlyList<Resolution> resolutions, Resolution resolution, out int index)
-        {
-            index = -1;
-            for (int i = 0; i < resolutions.Count; i++)
-            {
-                if (resolution.Matches(resolutions[i]))
-                {
-                    index = i;
-                    return true;
-                }
-            }
 
-            return false;
+        /// <summary>
+        /// The current resolution of the game window.
+        /// This should generally be used instead of <see cref="Screen.currentResolution"/>, which confusingly
+        /// returns the monitor resolution in windowed mode.
+        /// </summary>
+        public static Vector2Int CurrentDimensions()
+        {
+            return new Vector2Int(Screen.width, Screen.height);
         }
-
-        public static bool TryGetClosestResolutionIndex(Vector2Int dimensions, IReadOnlyList<Resolution> resolutions, out Resolution supportedResolution, out int index)
+        
+        /// <summary>
+        /// Returns which of the supported dimensions are closest in overall size to the proposed dimensions
+        /// by performing a simplified version of the matching logic Unity performs in Screen.SetResolution()
+        /// </summary>
+        public static bool TryGetClosestDimensionsIndex(Vector2Int dimensions, IReadOnlyList<Vector2Int> supportedDimensions, out Vector2Int closestDimensions, out int index)
         {
             index = -1;
-            supportedResolution = default;
+            closestDimensions = default;
             int minDistance = Int32.MaxValue;
 
             // Do a simplified version of the best-fit checks performed by Screen.SetResolution()
             // See FindClosestResolutionForExclusiveFullscreen() in WinScreenSetup.cpp in the engine code
-            for (int i = 0; i < resolutions.Count; i++)
+            for (int i = 0; i < supportedDimensions.Count; i++)
             {
-                var resolution = resolutions[i];
-                int distance = Mathf.Abs(dimensions.x - resolution.width) + Mathf.Abs(dimensions.y - resolution.height);
+                var possibleDimensions = supportedDimensions[i];
+                int distance = Mathf.Abs(dimensions.x - possibleDimensions.x) + Mathf.Abs(dimensions.y - possibleDimensions.y);
                 if (distance < minDistance)
                 {
                     minDistance = distance;
-                    supportedResolution = resolution;
-                    index = i;
-                }
-            }
-
-            return index >= 0;
-        }
-        
-        public static bool TryGetClosestResolutionIndex(Vector2Int dimensions, IReadOnlyList<Vector2Int> resolutions, out Vector2Int supportedResolution, out int index)
-        {
-            index = -1;
-            supportedResolution = default;
-            int minDistance = Int32.MaxValue;
-
-            // Do a simplified version of the best-fit checks performed by Screen.SetResolution()
-            // See FindClosestResolutionForExclusiveFullscreen() in WinScreenSetup.cpp in the engine code
-            for (int i = 0; i < resolutions.Count; i++)
-            {
-                var resolution = resolutions[i];
-                int distance = Mathf.Abs(dimensions.x - resolution.x) + Mathf.Abs(dimensions.y - resolution.y);
-                if (distance < minDistance)
-                {
-                    minDistance = distance;
-                    supportedResolution = resolution;
+                    closestDimensions = possibleDimensions;
                     index = i;
                 }
             }
