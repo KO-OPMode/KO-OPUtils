@@ -77,6 +77,16 @@ namespace KOOP.Extensions
         }
 
         /// <summary>
+        /// Returns true if the item exists in the list and false if not
+        /// </summary>
+        public static bool TryGetIndex<T>(this IList<T> list, T value, out int index)
+        {
+            index = list.IndexOf(value);
+            return index >= 0;
+        }
+
+
+        /// <summary>
         /// Returns a string representation of a collection, with each item separated by the delimiter.
         /// </summary>
         /// <param name="name">Prepends the result with `{name}: `</param>
