@@ -1,10 +1,7 @@
 using System;
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
-using Random = UnityEngine.Random;
 
 namespace KOOP.Extensions
 {
@@ -79,12 +76,45 @@ namespace KOOP.Extensions
         /// <summary>
         /// Returns true if the item exists in the list and false if not
         /// </summary>
-        public static bool TryGetIndex<T>(this IList<T> list, T value, out int index)
+        public static bool TryGetIndex<T>(this IReadOnlyList<T> list, T value, out int index)
         {
-            index = list.IndexOf(value);
+            if (list is List<T> typedList)
+            {
+                // Use the official C# IndexOf()
+                index = typedList.IndexOf(value);
+            }
+            else
+            {
+                // Use our custom IndexOf()
+                index = list.IndexOf(value);
+            }
+            
             return index >= 0;
         }
 
+        /// <summary>
+        /// Returns the first index of the item if it exists in the list and -1 if not
+        /// </summary>
+        public static int IndexOf<T>(this IReadOnlyList<T> list, T value)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (value != null)
+                {
+                    if (value.Equals(list[i]))
+                    {
+                        return i;
+                    }
+                }
+                else if (list[i] == null)
+                {
+                    // We're looking for null
+                    return i;
+                }
+            }
+
+            return -1;
+        }
 
         /// <summary>
         /// Returns a string representation of a collection, with each item separated by the delimiter.
