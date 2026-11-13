@@ -165,6 +165,19 @@ namespace KOOP.Extensions
 
             return false;
         }
+        
+        public static bool ContainsAll(this IEnumerable<string> strings, IEnumerable<string> values, StringComparison stringComparison)
+        {
+            foreach (var v in values)
+            {
+                if (!strings.Contains(v, stringComparison))
+                {
+                    return false;
+                }
+            }   
+
+            return true;
+        }
 
         public static bool TryFind<T>(this List<T> list, Predicate<T> predicate, out T value)
         {
